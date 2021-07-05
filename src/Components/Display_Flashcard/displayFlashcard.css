@@ -16,6 +16,7 @@
 
 }
 #Flashcard {
+	background-color: dimgray;
     padding: 70px 0;
     text-align: center;
 	position: absolute;
@@ -29,24 +30,7 @@
 	--web-action-target: Web_1920___2.html;
 	cursor: pointer;
 }
-#Flashcard_i {
-	fill: rgba(209,209,209,1);
-	stroke: rgba(112,112,112,1);
-	stroke-width: 5px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-.Flashcard_i {
-	position: absolute;
-	overflow: visible;
-	width: 558px;
-	height: 624px;
-	left: 0px;
-	top: 0px;
-	--web-animation: fadein 0.3s ease-out;
-	--web-action-type: page;
-	--web-action-target: Web_1920___2.html;
-	cursor: pointer;
+.text {
+	margin-left: auto;
+	margin-right: auto;
 }
