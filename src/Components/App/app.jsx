@@ -12,7 +12,7 @@ function App() {
     useEffect(async()=> {
         let response = await axios.get('http://127.0.0.1:8000/collections/');
         setCollections(response.data);
-    },);
+    },[]);
 
 
 
