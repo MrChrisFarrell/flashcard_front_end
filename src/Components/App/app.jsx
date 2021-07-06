@@ -15,10 +15,13 @@ function App() {
         setCollections(response.data);
     },[]);
 
-    function changeFlashcardIndex(flashcardIndex, change){
+    const changeFlashcardIndex=(flashcardIndex, collectionLength, change)=>{
         if(flashcardIndex === 0 && change < 0){
                 return;
-        }else{
+        }else if(flashcardIndex === collectionLength - 1 && change > 0){
+                return;
+        }
+        else{
                 setFlashcardIndex(flashcardIndex + change);
         }
     }
@@ -26,8 +29,7 @@ function App() {
     return(
             <div>
                 <DisplayCollections collections={collections}/>
-                <DisplayFlashcard collectionIndex={collectionIndex} flashcardIndex={flashcardIndex}/>
-                <FlashcardIndexButton flashcardIndex={flashcardIndex} changeFlashcardIndex={changeFlashcardIndex}/>
+                <DisplayFlashcard collectionIndex={collectionIndex} flashcardIndex={flashcardIndex} changeFlashcardIndex={changeFlashcardIndex}/>
             </div>
     );
   }

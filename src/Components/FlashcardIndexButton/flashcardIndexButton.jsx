@@ -4,8 +4,8 @@ const FlashcardIndexButton = (props) =>{
     return(
         <div>
             <span>
-                <button onClick={()=>props.changeFlashcardIndex(props.flashcardIndex, -1)}>Prev</button>
-                <button onClick={()=>props.changeFlashcardIndex(props.flashcardIndex, 1)}>Next</button>
+                <button onClick={()=>props.changeFlashcardIndex(props.flashcardIndex, props.collectionLength, -1)}>Prev</button>
+                <button onClick={()=>props.changeFlashcardIndex(props.flashcardIndex, props.collectionLength, 1)}>Next</button>
                 </span>
         </div>
     )

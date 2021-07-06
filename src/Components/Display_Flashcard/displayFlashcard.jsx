@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './displayFlashcard.css';
+import FlashcardIndexButton from '../FlashcardIndexButton/flashcardIndexButton';
 
 const DisplayFlashcard=(props)=>{
     const [collection, setCollection] = useState([]);
@@ -41,8 +42,11 @@ const DisplayFlashcard=(props)=>{
 
     if (viewTerm){
         return(
-            <div onClick={()=>toggleViewTerm(viewTerm)} id="Flashcard">
-                <h1 className="text">{flashcardTerms[props.flashcardIndex]}</h1>
+            <div>
+                <div onClick={()=>toggleViewTerm(viewTerm)} id="Flashcard">
+                    <h1 className="text">{flashcardTerms[props.flashcardIndex]}</h1>
+                </div>
+                <FlashcardIndexButton changeFlashcardIndex={props.changeFlashcardIndex} flashcardIndex={props.flashcardIndex} collectionLength={collection.length}/>
             </div>
         )
     }else{
