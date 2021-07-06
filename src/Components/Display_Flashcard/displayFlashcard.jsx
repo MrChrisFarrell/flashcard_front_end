@@ -37,7 +37,7 @@ const DisplayFlashcard=(props)=>{
 
     useEffect(()=>{
         getCollection();
-    }, [viewTerm]);
+    }, [flashcardTerms]);
 
     if (viewTerm){
         return(
