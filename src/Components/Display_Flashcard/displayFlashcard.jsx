@@ -37,8 +37,19 @@ const DisplayFlashcard=(props)=>{
     }
 
     useEffect(()=>{
+        let terms = collection.map((flashcard)=>
+            <h1>{flashcard.term}</h1>
+        );
+        setFlashcardTerms(terms);
+        let defs = collection.map((flashcard)=>
+            <h1>{flashcard.definition}</h1>
+        );
+        setFlashcardDefinitions(defs);
+    }, [props.collectionIndex])
+
+    useEffect(()=>{
         getCollection();
-    }, [flashcardTerms]);
+    }, [collection]);
 
     if (viewTerm){
         return(

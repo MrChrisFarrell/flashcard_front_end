@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import DisplayFlashcard from '../Display_Flashcard/displayFlashcard';
 import DisplayCollections from '../Display_collections/displayCollections';
-import FlashcardIndexButton from '../FlashcardIndexButton/flashcardIndexButton';
+import CreateFlashcard from '../Forms/createFlashcard';
 
 function App() {
     const [collections, setCollections] = useState([]);
@@ -26,10 +26,19 @@ function App() {
         }
     }
 
+    const changeCollectionIndex=(index)=>{
+            setCollectionIndex(index + 1);
+    }
+
+    const postFlashcard = async (flashcard)=>{
+            await axios.post('http://127.0.0.1:8000/flashcards/', flashcard);
+    }
+
     return(
             <div>
-                <DisplayCollections collections={collections}/>
+                <DisplayCollections collections={collections} changeCollectionIndex={changeCollectionIndex}/>
                 <DisplayFlashcard collectionIndex={collectionIndex} flashcardIndex={flashcardIndex} changeFlashcardIndex={changeFlashcardIndex}/>
+                <CreateFlashcard postFlashcard={postFlashcard} />
             </div>
     );
   }

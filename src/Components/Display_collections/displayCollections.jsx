@@ -4,7 +4,7 @@ import axios from 'axios';
 const DisplayCollections =(props)=> {
     const collections = props.collections.map((collection, index)=>
         <div>
-            <h1>Collection Name - {collection.name}   Collection Index - {index}</h1>
+            <button onClick={()=>props.changeCollectionIndex(index)}>{collection.name}</button>
         </div>
     );
 
