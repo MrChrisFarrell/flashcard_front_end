@@ -2,22 +2,22 @@ import React, {useEffect} from 'react';
 import useForm from './useForm';
 import './forms.css';
 
-const CreateFlashcard = (props) => {
-    const { values, handleChange, handleSubmit } = useForm(flashcardCreated)
+const EditFlashcard = (props) => {
+    const { values, handleChange, handleSubmit } = useForm(flashcardEdited)
 
-    function flashcardCreated(){
+    function flashcardEdited(){
         const flashcard = {
             term: values.term,
             definition: values.definition,
             collection: props.collectionIndex
         };
-        props.postFlashcard(flashcard);
-        alert('Flashcard added to this collection!');
+        props.putFlashcard(flashcard);
+        alert('Flashcard edited!');
     }
 
     useEffect(()=>{
 
-    },[flashcardCreated])
+    },[flashcardEdited])
 
     return (
         <div className="form">
@@ -42,10 +42,10 @@ const CreateFlashcard = (props) => {
                         required={true}
                     />
                 </label>
-                <button type="submit">Create</button>
+                <button type="submit">Edit Flashcard</button>
             </form>
         </div>
     );
 };
 
-export default CreateFlashcard;
+export default EditFlashcard;

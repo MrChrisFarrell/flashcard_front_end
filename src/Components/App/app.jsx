@@ -4,6 +4,7 @@ import axios from 'axios';
 import DisplayFlashcard from '../Display_Flashcard/displayFlashcard';
 import DisplayCollections from '../Display_collections/displayCollections';
 import CreateFlashcard from '../Forms/createFlashcard';
+import EditFlashcard from '../Forms/editFlashcard';
 
 function App() {
     const [collections, setCollections] = useState([]);
@@ -34,11 +35,16 @@ function App() {
             await axios.post('http://127.0.0.1:8000/flashcards/', flashcard);
     }
 
+    const putFlashcard = async (flashcard)=>{
+            await axios.put(`http://127.0.0.1:8000/flashcards/${flashcardIndex + 1}/`, flashcard);
+    }
+
     return(
             <div>
                 <DisplayCollections collections={collections} changeCollectionIndex={changeCollectionIndex}/>
                 <DisplayFlashcard collectionIndex={collectionIndex} flashcardIndex={flashcardIndex} changeFlashcardIndex={changeFlashcardIndex}/>
-                <CreateFlashcard postFlashcard={postFlashcard} />
+                <CreateFlashcard postFlashcard={postFlashcard} collectionIndex={collectionIndex}/>
+                <EditFlashcard putFlashcard={putFlashcard} collectionIndex={collectionIndex}/>
             </div>
     );
   }
