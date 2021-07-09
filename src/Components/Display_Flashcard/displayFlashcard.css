@@ -16,12 +16,13 @@
 
 }
 #Flashcard {
+	border-radius: 25px;
 	background-color: dimgray;
     padding: 70px 0;
     text-align: center;
 	position: absolute;
-	width: 558px;
-	height: 624px;
+	width: 50%;
+	height: 75%;
 	left: 30%;
 	top: 10%;
 	overflow: visible;
@@ -30,6 +31,15 @@
 	--web-action-target: Web_1920___2.html;
 	cursor: pointer;
 }
+
+.flashcardIndexButton {
+	display: inline-block;
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	bottom: 10%;
+}
+
 .text {
 	margin-left: auto;
 	margin-right: auto;

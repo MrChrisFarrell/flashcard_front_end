@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './displayFlashcard.css';
 import FlashcardIndexButton from '../FlashcardIndexButton/flashcardIndexButton';
+import { render } from '@testing-library/react';
 
 const DisplayFlashcard=(props)=>{
     const [collection, setCollection] = useState([]);
@@ -18,14 +19,7 @@ const DisplayFlashcard=(props)=>{
         }finally{
             setLoadingFlashcards(false);
         }
-        let terms = collection.map((flashcard)=>
-            <h1>{flashcard.term}</h1>
-        );
-        setFlashcardTerms(terms);
-        let defs = collection.map((flashcard)=>
-            <h1>{flashcard.definition}</h1>
-        );
-        setFlashcardDefinitions(defs);
+        
     }
 
     function toggleViewTerm(viewTerm){
@@ -37,19 +31,25 @@ const DisplayFlashcard=(props)=>{
     }
 
     useEffect(()=>{
-        let terms = collection.map((flashcard)=>
-            <h1>{flashcard.term}</h1>
+        let terms = collection.map((flashcard, index)=>
+            <div>
+                <h1>{flashcard.term}</h1>
+                <h2>{index + 1}/{collection.length}</h2>
+            </div>
         );
         setFlashcardTerms(terms);
-        let defs = collection.map((flashcard)=>
-            <h1>{flashcard.definition}</h1>
+        let defs = collection.map((flashcard, index)=>
+            <div>
+                <h1>{flashcard.definition}</h1>
+                <h2>{index + 1}/{collection.length}</h2>
+            </div>
         );
         setFlashcardDefinitions(defs);
-    }, [props.collectionIndex])
+    },[collection])
 
     useEffect(()=>{
         getCollection();
-    }, [collection]);
+    }, [props.collectionIndex, viewTerm]);
 
     if (viewTerm){
         return(
@@ -57,13 +57,18 @@ const DisplayFlashcard=(props)=>{
                 <div onClick={()=>toggleViewTerm(viewTerm)} id="Flashcard">
                     <h1 className="text">{flashcardTerms[props.flashcardIndex]}</h1>
                 </div>
+                <div className="flashcardIndexButton">
                 <FlashcardIndexButton changeFlashcardIndex={props.changeFlashcardIndex} flashcardIndex={props.flashcardIndex} collectionLength={collection.length}/>
+                </div>
             </div>
-        )
+        );
     }else{
         return(
-            <div onClick={()=>toggleViewTerm(viewTerm)} id="Flashcard">
-                <h1 className="text">{flashcardDefinitions[props.flashcardIndex]}</h1>
+            <div>
+                <div onClick={()=>toggleViewTerm(viewTerm)} id="Flashcard">
+                    <h1 className="text">{flashcardDefinitions[props.flashcardIndex]}</h1>
+                </div>
+                <FlashcardIndexButton changeFlashcardIndex={props.changeFlashcardIndex} flashcardIndex={props.flashcardIndex} collectionLength={collection.length}/>
             </div>
         )
     }

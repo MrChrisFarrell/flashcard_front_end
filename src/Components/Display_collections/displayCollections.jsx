@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 const DisplayCollections =(props)=> {
     const collections = props.collections.map((collection, index)=>
-        <div>
+        <span style={{margin: "4px"}}>
             <button onClick={()=>props.changeCollectionIndex(index)}>{collection.name}</button>
-        </div>
+        </span>
     );
 
     return(
-        <div>
+        <div style={{margin: "2px", border: "solid black 2px"}}>
             <h2>Collections</h2>
             {collections}
         </div>

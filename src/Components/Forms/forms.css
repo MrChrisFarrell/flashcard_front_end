@@ -1,7 +1,9 @@
 
 
 .form {
-    width:20%
+    width:20%;
+    border: solid black 2px;
+    margin: 2px;
 }
 
   input[type=text], select {
